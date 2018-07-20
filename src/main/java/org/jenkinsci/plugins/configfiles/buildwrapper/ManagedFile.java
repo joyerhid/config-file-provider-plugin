@@ -108,7 +108,7 @@ public class ManagedFile extends ConfigFile implements ExtensionPoint, Describab
 
         public ListBoxModel doFillFileIdItems(@AncestorInPath ItemGroup context) {
             ListBoxModel items = new ListBoxModel();
-            items.add("please select", "");
+            items.add("Please select item", "");
             for (Config config : ConfigFiles.getConfigsInContext(context, null)) {
                 items.add(config.name, config.id);
             }
