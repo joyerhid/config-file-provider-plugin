@@ -7,6 +7,7 @@ import hudson.model.BuildListener;
 import hudson.model.StringParameterValue;
 import hudson.tasks.BuildWrapper;
 import hudson.util.VariableResolver;
+import jenkins.model.Jenkins;
 import org.jenkinsci.lib.configprovider.model.Config;
 import org.jenkinsci.lib.configprovider.model.ConfigFile;
 import org.jenkinsci.plugins.configfiles.buildwrapper.ConfigFileBuildWrapper;
@@ -36,6 +37,12 @@ public class ConfigFileParameterValue extends StringParameterValue {
 
     public void setManagedFile(ManagedFile managedFile) {
         this.managedFile = managedFile;
+    }
+
+    public String getViewFileLink() {
+        String link = Jenkins.getInstance().getRootUrl();
+        link = link + "configfiles/show?id=" + managedFile.getFileId();
+        return link;
     }
 
     @Override
